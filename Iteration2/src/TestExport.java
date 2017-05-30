@@ -17,7 +17,8 @@ public class TestExport {
 		}
 		Object importObj = seanTest.importData();
 		if (importObj != null ){
-			System.out.println("Successfully imported the data. Object is: " + importObj.toString());
+			System.out.println("Successfully imported the data."
+					+ " Object is: " + importObj.toString());
 		} else {
 			System.out.println("Failed to import the data");
 		}
