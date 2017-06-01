@@ -7,6 +7,7 @@ public class GUIMain {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					@SuppressWarnings("unused")
 					GUIBase myProg = new GUIBase();
 				} catch (Exception e) {
 					e.printStackTrace();

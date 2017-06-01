@@ -11,25 +11,44 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JTextField;
-
 public class NumWalls {
 
 	private JPanel myPanel;
-	private JTextField myInputWalls;
 	private int myNumWalls;
 	private JComboBox<String> myComboBox;
 	private JFrame myFrame;
+	private JButton btnSelectStore;
+	private JButton btnCalculator;
+	private JButton btnNumberOfWalls;
 	
-	public NumWalls(JPanel thePanel) {
+	public NumWalls(JPanel thePanel, JButton theSS, JButton theCalc, JButton theNum) {
 		myPanel = thePanel;
+		btnSelectStore = theSS;
+		btnCalculator = theCalc;
+		btnNumberOfWalls = theNum;
 	}
-	@SuppressWarnings("unchecked")
-	void evokeWallGUI() {
+	void evokeWall() {
 		JLabel lblNumberOfWalls = new JLabel("Number of Walls:");
 		lblNumberOfWalls.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNumberOfWalls.setBounds(12, 13, 162, 41);
 		myPanel.add(lblNumberOfWalls);
+		
+//		JButton btnNext = new JButton("Next");
+//		btnNext.setEnabled(false);
+//		btnNext.setBounds(304, 22, 97, 25);
+//		btnNext.addActionListener(new ActionListener(){
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				
+//			}
+//			
+//		});
+//		myPanel.add(btnNext);
+		
+		JLabel next = new JLabel("<-- To the next page!");
+		next.setBounds(12, 75, 162, 41);
+		next.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		
 		String[] choice = {"0", "1", "2", "3", "4", "5"};
 		myComboBox = new JComboBox<String>(choice);
@@ -39,21 +58,27 @@ public class NumWalls {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String choice = (String) myComboBox.getSelectedItem();
+				//System.out.println(choice);
 				if (choice.equals("0")){
 					JOptionPane.showMessageDialog(myFrame,"Pick a Number","Alert",JOptionPane.ERROR_MESSAGE);
+					//btnNext.setEnabled(false);
+					btnSelectStore.setEnabled(false);
+					btnCalculator.setEnabled(false);
+					myPanel.remove(next);
+					myPanel.repaint();
 				} else{
 					myNumWalls = Integer.parseInt(choice);
-					System.out.println(myNumWalls);
+					//btnNext.setEnabled(true);
+					btnSelectStore.setEnabled(true);
+					myPanel.add(next);
+					myPanel.repaint();
+					//System.out.println(myNumWalls);
 				}
 			}
 		});
 		myComboBox.setBounds(172, 23, 116, 22);
 		myPanel.add(myComboBox);
 		
-		JButton btnNext = new JButton("Next");
-		btnNext.setEnabled(false);
-		btnNext.setBounds(304, 22, 97, 25);
-		myPanel.add(btnNext);
+		
 	}
-	
 }
