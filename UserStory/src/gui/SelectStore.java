@@ -1,87 +1,114 @@
 package gui;
 
-import java.awt.EventQueue;
+import java.awt.Color;
+import java.awt.Font;
 
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
 
 public class SelectStore {
-
-	private JFrame frmThePotatoSquad;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SelectStore window = new SelectStore();
-					window.frmThePotatoSquad.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	private JPanel myPanel;
+	private JButton btnSelectStore;
+	private JButton btnCalculator;
+	private JButton btnNumberOfWalls;
+	
+	public SelectStore(JPanel thePanel, JButton theSS, JButton theCalc, JButton theNum ) {
+		myPanel = thePanel;
+		btnSelectStore = theSS;
+		btnCalculator = theCalc;
+		btnNumberOfWalls = theNum;
 	}
-
-	/**
-	 * Create the application.
-	 */
-	public SelectStore() {
-		initialize();
+	
+	void evokeStore() {
+		
+		createCostco();
+		createStoreHomeDepot();
+		createStoreLowes();
+//		JLabel lblSelectStore = new JLabel("Select Store: ");
+//		lblSelectStore.setFont(new Font("Tahoma", Font.BOLD, 16));
+//		lblSelectStore.setBounds(12, 13, 162, 41);
+//		myPanel.add(lblSelectStore);
+		
+		JLabel next = new JLabel("<-- To the next page!");
+		next.setBounds(12, 150, 162, 41);
+		next.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		//myPanel.add(next);
+		btnCalculator.setEnabled(true);
+		
+//		JSeparator separator = new JSeparator();
+//		separator.setOrientation(SwingConstants.VERTICAL);
+//		separator.setForeground(Color.BLACK);
+//		separator.setBackground(Color.BLACK);
+//		separator.setBounds(162, 0, 2, 393);
+//		myPanel.add(separator);
+//		
+//		JSeparator separator_1 = new JSeparator();
+//		separator_1.setOrientation(SwingConstants.VERTICAL);
+//		separator_1.setForeground(Color.BLACK);
+//		separator_1.setBackground(Color.BLACK);
+//		separator_1.setBounds(346, 0, 2, 393);
+//		myPanel.add(separator_1);
+		
+		
 	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frmThePotatoSquad = new JFrame();
-		frmThePotatoSquad.setTitle("The Potato Squad");
-		frmThePotatoSquad.setBounds(100, 100, 868, 571);
-		frmThePotatoSquad.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	private void createCostco(){
+		JLabel lblCostco = new JLabel("Costco");
+		lblCostco.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblCostco.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCostco.setBounds(0, 0, 161, 109);
+		myPanel.add(lblCostco);
 		
-		JMenuBar menuBar = new JMenuBar();
-		frmThePotatoSquad.setJMenuBar(menuBar);
+		JButton mat1 = new JButton("Material1");
+		mat1.setBounds(10, 113, 136, 67);
+		myPanel.add(mat1);
 		
-		JMenu mnHome = new JMenu("Home");
-		menuBar.add(mnHome);
+		JButton mat2 = new JButton("Material2");
+		mat2.setBounds(10, 208, 136, 67);
+		myPanel.add(mat2);
 		
-		JMenu mnProjects = new JMenu("Projects");
-		menuBar.add(mnProjects);
-		
-		JMenu mnSupport = new JMenu("Support");
-		menuBar.add(mnSupport);
-		frmThePotatoSquad.getContentPane().setLayout(null);
-		
-		JButton btnSignin = new JButton("Sign-In");
-		btnSignin.setBounds(753, 0, 97, 25);
-		frmThePotatoSquad.getContentPane().add(btnSignin);
-		
-		JButton button = new JButton("Number of Walls");
-		button.setBounds(43, 70, 190, 72);
-		frmThePotatoSquad.getContentPane().add(button);
-		
-		JButton btnSelectStore = new JButton("Select Store");
-		btnSelectStore.setBounds(43, 142, 190, 72);
-		frmThePotatoSquad.getContentPane().add(btnSelectStore);
-		
-		JButton btnCalculator = new JButton("Calculator");
-		btnCalculator.setEnabled(false);
-		btnCalculator.setBounds(43, 214, 190, 72);
-		frmThePotatoSquad.getContentPane().add(btnCalculator);
-		
-		JButton button_1 = new JButton("Load");
-		button_1.setEnabled(false);
-		button_1.setBounds(43, 404, 97, 25);
-		frmThePotatoSquad.getContentPane().add(button_1);
-		
-		JButton btnSave = new JButton("Save");
-		btnSave.setEnabled(false);
-		btnSave.setBounds(141, 404, 97, 25);
-		frmThePotatoSquad.getContentPane().add(btnSave);
+		JButton mat3 = new JButton("Material3");
+		mat3.setBounds(369, 310, 136, 67);
+		myPanel.add(mat3);
 	}
-
+	private void createStoreHomeDepot(){
+		JLabel lblHomeDepot = new JLabel("Home Depot");
+		lblHomeDepot.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblHomeDepot.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHomeDepot.setBounds(173, 0, 161, 109);
+		myPanel.add(lblHomeDepot);
+		
+		JButton mat1 = new JButton("Material1");
+		mat1.setBounds(183, 113, 136, 67);
+		myPanel.add(mat1);
+		
+		JButton mat2 = new JButton("Material2");
+		mat2.setBounds(183, 208, 136, 67);
+		myPanel.add(mat2);
+		
+		JButton mat3 = new JButton("Material3");
+		mat3.setBounds(183, 310, 136, 67);
+		myPanel.add(mat3);
+	}
+	private void createStoreLowes(){
+		JLabel lblLowes = new JLabel("Lowes");
+		lblLowes.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblLowes.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLowes.setBounds(359, 0, 161, 109);
+		myPanel.add(lblLowes);
+		
+		JButton mat1 = new JButton("Material1");
+		mat1.setBounds(369, 113, 136, 67);
+		myPanel.add(mat1);
+		
+		JButton mat2 = new JButton("Material2");
+		mat2.setBounds(369, 208, 136, 67);
+		myPanel.add(mat2);
+		
+		JButton mat3 = new JButton("Material3");
+		mat3.setBounds(12, 310, 136, 67);
+		myPanel.add(mat3);
+	}
 }
