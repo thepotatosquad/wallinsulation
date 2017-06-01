@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 
 public class GUIBase {
 	private JFrame myFrame;
+	private JPanel myWholePanel;
 	private JPanel myPanel;
 	private NumWalls NumWallsGUI;
 	private SelectStore mySelectStore;
@@ -36,12 +37,12 @@ public class GUIBase {
 		myFrame.setVisible(true);
 	}
 	private void initialize() {
-		
+		initializeWholePanel();
 		
 		myPanel = new JPanel();
 		myPanel.setBackground(Color.WHITE);
 		myPanel.setBounds(272, 69, 532, 393);
-		myFrame.getContentPane().add(myPanel);
+		myWholePanel.add(myPanel);
 		myPanel.setLayout(null);
 		
 		btnNumberOfWalls = new JButton("Number of Walls");
@@ -50,12 +51,13 @@ public class GUIBase {
 		NumWallsGUI = new NumWalls(myPanel, btnSelectStore, btnCalculator, btnNumberOfWalls);
 		mySelectStore = new SelectStore(myPanel, btnSelectStore, btnCalculator, btnNumberOfWalls);
 		myCalculator = new Calculator(myPanel, btnSelectStore, btnCalculator, btnNumberOfWalls);
+//		myHome = new Home(myWholePanel);
 		
 		myFrame.setJMenuBar(createMenuBar());
 		
 		JButton btnNewButton = new JButton("Sign-In");
 		btnNewButton.setBounds(756, 0, 97, 25);
-		myFrame.getContentPane().add(btnNewButton);
+		myWholePanel.add(btnNewButton);
 		
 		
 		btnNumberOfWalls.setBounds(30, 69, 190, 72);
@@ -67,7 +69,7 @@ public class GUIBase {
 				myPanel.repaint();
 			}
 		});
-		myFrame.getContentPane().add(btnNumberOfWalls);
+		myWholePanel.add(btnNumberOfWalls);
 		
 		
 		btnSelectStore.setEnabled(false);
@@ -80,7 +82,7 @@ public class GUIBase {
 				myPanel.repaint();
 			}
 		});
-		myFrame.getContentPane().add(btnSelectStore);
+		myWholePanel.add(btnSelectStore);
 		
 		
 		btnCalculator.setEnabled(false);
@@ -94,15 +96,22 @@ public class GUIBase {
 			}
 			
 		});
-		myFrame.getContentPane().add(btnCalculator);
+		myWholePanel.add(btnCalculator);
 		
 		JButton btnNewButton_1 = new JButton("Load");
 		btnNewButton_1.setBounds(27, 437, 97, 25);
-		myFrame.getContentPane().add(btnNewButton_1);
+		myWholePanel.add(btnNewButton_1);
 		
 		JButton button = new JButton("Save");
 		button.setBounds(123, 437, 97, 25);
-		myFrame.getContentPane().add(button);
+		myWholePanel.add(button);
+	}
+	private void initializeWholePanel(){
+		myWholePanel = new JPanel();
+		myWholePanel.setBackground(Color.LIGHT_GRAY);
+		myWholePanel.setBounds(0, 0, 871, 581);
+		myFrame.getContentPane().add(myWholePanel);
+		myWholePanel.setLayout(null);
 	}
 	private JMenuBar createMenuBar(){
 		JMenuBar menuBar = new JMenuBar();
