@@ -146,7 +146,7 @@ public class GUIMain {
 		return about;
 	}
 	private JMenuItem createSignInMenuItem(){
-		JMenuItem signIn = new JMenuItem("Sign Up");
+		JMenuItem signIn = new JMenuItem("Sign In");
 		signIn.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
