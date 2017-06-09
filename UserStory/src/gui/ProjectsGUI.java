@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class ProjectsGUI {
@@ -109,9 +110,27 @@ public class ProjectsGUI {
 		myPanel.add(calculatorButton);
 		loadButton = new JButton("Load");
 		loadButton.setBounds(27, 437, 97, 25);
+		loadButton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null,"Load still in progress\n"
+						+ "Thank you for your patience!",null,JOptionPane.INFORMATION_MESSAGE);
+				
+			}
+			
+		});
 		myPanel.add(loadButton);
 		saveButton= new JButton("Save");
 		saveButton.setBounds(123, 437, 97, 25);
+		saveButton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null,"Save still in progress\n"
+						+ "Thank you for your patience!",null,JOptionPane.INFORMATION_MESSAGE);
+				
+			}
+			
+		});
 		myPanel.add(saveButton);
 	}
 }
