@@ -103,6 +103,9 @@ public class CalculatorGUI {
 		myPanel.add(calcLabel);
 		updateIntWalls();
 	}
+	/**
+	 * To help setup the button for "Calculate Cost"
+	 */
 	private void setupCalculateCostButton(){
 		myCalculateCostButton = new JButton[myWalls];
 		for(int i = 0; i < myWalls; i++){

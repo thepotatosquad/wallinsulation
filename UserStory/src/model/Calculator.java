@@ -14,7 +14,7 @@ public class Calculator {
 	/** store my length. **/
 	private double myLength;
 	/** store my price from store. **/
-	private double myPrice;
+	private static double myPrice;
 	/** store my total cost of a wall. **/
 	private double myCost;
 	
@@ -25,7 +25,6 @@ public class Calculator {
 		myWidth = 0;
 		myHeight = 0;
 		myLength = 0;
-		myPrice = 1;
 		myCost = 0;
 	}
 	/**
@@ -93,6 +92,7 @@ public class Calculator {
 	 */
 	public void setPrice(double thePrice){
 		myPrice = thePrice;
+		//System.out.println(myPrice);
 	}
 	/**
 	 * Getter for the price.
