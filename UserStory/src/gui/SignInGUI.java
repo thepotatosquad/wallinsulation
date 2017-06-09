@@ -31,9 +31,11 @@ public class SignInGUI {
 	private JButton mySignUpButton;
 	private String myUsername;
 	private String myPassword;
+	private ProfileGUI myProfilePage;
 	private Users myUser;
-	public SignInGUI(JPanel thePanel){
+	public SignInGUI(JPanel thePanel, ProfileGUI profilePage){
 		myPanel = thePanel;
+		myProfilePage = profilePage;
 	}
 	void evokeSignIn(){
 		myPanel.setBackground(Color.LIGHT_GRAY);
@@ -84,7 +86,6 @@ public class SignInGUI {
 		public void actionPerformed(ActionEvent e) {
 			int unCount = myUsernameField.getText().length();
 			int passCount = myPasswordField.getPassword().length;
- ///				myPanel.remove(myErrorLabel);
 				myPanel.repaint();
 				myUsername = myUsernameField.getText();
 				myPassword = new String(myPasswordField.getPassword());
@@ -94,7 +95,6 @@ public class SignInGUI {
 				String fname = null;
 				String lname = null;
 				
-//				File loginf = new File(url.getPath());
 	            try{
 	            	FileInputStream fin = new FileInputStream("./src/login.txt");
 	                Scanner read = new Scanner(fin);
@@ -114,8 +114,10 @@ public class SignInGUI {
 	                }
 	                if(login){
 //		                   myPanel.setVisible(false);
-	                	System.out.println("GOOD:  " + lname +" "+ fname +" "+ email +" " +  user +" " + pass);
+	                	//System.out.println("GOOD:  " + lname +" "+ fname +" "+ email +" " +  user +" " + pass);
 	                	myUser = new Users(fname, lname, email, user, pass);
+	                	myPanel.setVisible(false);
+	                	myProfilePage.evokeProfile();
 	                }
 	                else {
 		                JOptionPane.showMessageDialog(null, "Incorrect username or password");
@@ -129,25 +131,14 @@ public class SignInGUI {
 	            catch (FileNotFoundException qwerty){
 	                    JOptionPane.showMessageDialog(null, "Can't find a text file");
 	            }
-	       }
-//				SignIn signInCheck = new SignIn();
-//				if(signInCheck.checkSignIn(myUsername, myPassword))	{
-//					myPanel.setVisible(false);
-//					myPanel.repaint();
-//				} else { System.out.println("false"); }
-//			} else {
-//				myErrorLabel = new JLabel ("<html>Username has to be longer than 5 char<br>"
-//						+ "Password has to be longer than 5 char<html>");
-//				myErrorLabel.setForeground(Color.RED);
-//				myErrorLabel.setBounds(550, 210, myErrorLabel.getPreferredSize().width, myErrorLabel.getPreferredSize().height);
-//				myPanel.add(myErrorLabel);
-//				myPanel.repaint();
-			}
+	      }
+	}
 
 	public class SignUpListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("let's Sign Up! lol");
+			JOptionPane.showMessageDialog(null,"Sign-Up not available yet!\n"
+					+ "Coming soon!","Alert",JOptionPane.ERROR_MESSAGE);
 		}
 		
 	}

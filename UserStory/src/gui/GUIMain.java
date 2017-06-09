@@ -74,8 +74,8 @@ public class GUIMain {
 		myWelcomePage = new WelcomeGUI(myWelcomePanel);
 		myHomePage = new HomeGUI(myHomePanel);
 		myProjectsPage = new ProjectsGUI(myProjectsPanel);
-		mySignInPage = new SignInGUI(mySignInPanel);
 		myProfilePage = new ProfileGUI(myProfilePanel);
+		mySignInPage = new SignInGUI(mySignInPanel, myProfilePage);
 		startProgram();
 		
 	}
