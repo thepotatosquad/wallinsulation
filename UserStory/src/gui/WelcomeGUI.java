@@ -5,11 +5,11 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class WelcomePage {
+public class WelcomeGUI {
 	private JPanel myPanel;
 	private JLabel myWelcome;
 	private JLabel myDescription;
-	public WelcomePage(JPanel thePanel) {
+	public WelcomeGUI(JPanel thePanel) {
 		myPanel = thePanel;
 	}
 	void evokeWelcome(){
