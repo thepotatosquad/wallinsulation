@@ -2,6 +2,8 @@ package gui;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 
 import javax.swing.BorderFactory;
@@ -23,6 +25,7 @@ public class CalculatorGUI {
 	private JButton calculatorButton;
 	/** access to wall button. */
 	private JButton wallsButton;
+	private JButton[] myCalculateCostButton;
 	/** label of calculator. */
 	private JLabel calcLabel;
 	/** array of JLabel for the "Walls#".*/
@@ -68,9 +71,11 @@ public class CalculatorGUI {
 	private void updateIntWalls(){
 		myWalls = myCalcSize.getNumOfWalls();
 		mySplitPanel = new JPanel[myWalls];
+		myCalc = new Calculator[myWalls];
 		setupTitleJLabel();
 		setupDimJLabel();
 		setupJTextField();
+		setupCalculateCostButton();
 		for(int i = 0; i < myWalls; i++){
 			mySplitPanel[i] = new JPanel();
 			mySplitPanel[i].setBackground(Color.WHITE);
@@ -83,7 +88,8 @@ public class CalculatorGUI {
 			mySplitPanel[i].add(myHeight[i]).setBounds(50, 80, 50, 20);
 			mySplitPanel[i].add(myLengthLabel[i]).setBounds(3, 100, 50, 40);
 			mySplitPanel[i].add(myLength[i]).setBounds(50, 110, 50, 20);
-			mySplitPanel[i].add(myCostLabel[i]).setBounds(3, 200, 55, 40);
+			mySplitPanel[i].add(myCalculateCostButton[i]).setBounds(30, 150, 70, 40);
+			mySplitPanel[i].add(myCostLabel[i]).setBounds(3, 200, 70, 40);
 			myPanel.add(mySplitPanel[i]);
 		}
 	}
@@ -97,19 +103,57 @@ public class CalculatorGUI {
 		myPanel.add(calcLabel);
 		updateIntWalls();
 	}
+	private void setupCalculateCostButton(){
+		myCalculateCostButton = new JButton[myWalls];
+		for(int i = 0; i < myWalls; i++){
+			myCalculateCostButton[i] = new JButton("Calculate Cost");
+			myCalculateCostButton[i].setFont(new Font("Tahoma", Font.PLAIN, 8));
+			final Integer newI = new Integer(i);
+			myCalculateCostButton[i].addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					myCalc[newI].calculateCost();
+					myCostLabel[newI].setText(myCostLabel[newI].getText() + myCalc[newI].getCost());
+					//System.out.println(myCalc[newI].getCost());
+				}
+			});
+		}
+	}
 	/**
-	 * Needs update!
+	 * Setting up the JTextField for width, height, and length.
+	 * Adding each with actionlistener to send message to the calc.
 	 */
 	private void setupJTextField(){
-		myCalc = new Calculator[myWalls];
 		myWidth = new JTextField[myWalls];
 		myHeight = new JTextField[myWalls];
 		myLength = new JTextField[myWalls];
-		for(int i = 0; i < myWalls; i++){
+		for(int i = 0;i < myWalls; i++){
 			myCalc[i] = new Calculator();
+			final Integer newI = new Integer(i);
 			myWidth[i] = new JTextField();
+			myWidth[i].addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					myCalc[newI].setWidth(Double.parseDouble(myWidth[newI].getText()));
+					//System.out.println("W " + newI + " " + myCalc[newI].getWidth());
+				}
+			});
 			myHeight[i] = new JTextField();
+			myHeight[i].addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					myCalc[newI].setHeight(Double.parseDouble(myHeight[newI].getText()));
+					//System.out.println("H "+ newI + " " + myCalc[newI].getHeight());
+				}
+			});
 			myLength[i] = new JTextField();
+			myLength[i].addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					myCalc[newI].setLength(Double.parseDouble(myLength[newI].getText()));
+					//System.out.println("L " + newI + " " + myCalc[newI].getLength());
+				}
+			});
 		}
 	}
 	/**
@@ -142,7 +186,7 @@ public class CalculatorGUI {
 			mySplitLabel[i] = new JLabel("Wall " + (i+1) + ": ");
 			mySplitLabel[i].setFont(new Font("Tahoma", Font.BOLD, 13));
 			myCostLabel[i] = new JLabel("Cost " + (i+1) + ": ");
-			myCostLabel[i].setFont(new Font("Tahoma", Font.BOLD, 12));
+			myCostLabel[i].setFont(new Font("Tahoma", Font.BOLD, 10));
 		}
 	}
 	/**

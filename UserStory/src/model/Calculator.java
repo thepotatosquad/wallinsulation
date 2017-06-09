@@ -22,7 +22,11 @@ public class Calculator {
 	 * Constructor for calculator.
 	 */
 	public Calculator(){
-		
+		myWidth = 0;
+		myHeight = 0;
+		myLength = 0;
+		myPrice = 1;
+		myCost = 0;
 	}
 	/**
 	 * Setter for number of walls 
@@ -102,7 +106,7 @@ public class Calculator {
 	 * along with the price
 	 */
 	public void calculateCost(){
-		
+		myCost = (myWidth * myHeight * myLength) * myPrice;
 	}
 	/**
 	 * To get the cost after calculating the cost.
