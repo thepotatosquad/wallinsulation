@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import model.Calculator;
+
 public class WallsGUI {
 	private JPanel myPanel;
 	private JButton storeButton;
@@ -18,11 +20,13 @@ public class WallsGUI {
 	private int myWallsInt;
 	private JLabel numOfWallsLabel;
 	private JLabel nextLabel;
+	private Calculator myCalc;
 	public WallsGUI(JPanel thePanel, JButton theWalls, JButton theStore, JButton theCalc){
 		myPanel = thePanel;
 		wallsButton = theWalls;
 		storeButton = theStore;
 		calculatorButton = theCalc;
+		myCalc = new Calculator();
 	}
 	void evokeWalls(){
 		numOfWallsLabel = new JLabel("Number of Walls:");
@@ -42,21 +46,18 @@ public class WallsGUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String choice = (String) myComboBox.getSelectedItem();
-				//System.out.println(choice);
 				if (choice.equals("0")){
 					JOptionPane.showMessageDialog(null,"Pick a Number","Alert",JOptionPane.ERROR_MESSAGE);
-					//btnNext.setEnabled(false);
 					storeButton.setEnabled(false);
 					calculatorButton.setEnabled(false);
 					myPanel.remove(nextLabel);
 					myPanel.repaint();
 				} else{
 					myWallsInt = Integer.parseInt(choice);
-					//btnNext.setEnabled(true);
+					myCalc.setNumOfWalls(myWallsInt);
 					storeButton.setEnabled(true);
 					myPanel.add(nextLabel);
 					myPanel.repaint();
-					//System.out.println(myNumWalls);
 				}
 			}
 		});
